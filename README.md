@@ -97,16 +97,6 @@ Core engine (src/lib, pure TypeScript, unit-testable)
 
 **Hybrid design.** Scores are computed by the deterministic engine, so they're explainable and stable. The LLM adds language: narratives, plans, dynamic questions, rewrites and pitches. Prompts tell the LLM never to invent skills or numbers.
 
-## Demo script (≈5 min)
-
-1. **Home → "Try with demo profile"**: dashboard shows readiness ring, skill radar, best-fit roles.
-2. **Digital Twin → Profile**: walk the tree, point at evidence tags (green = proven, amber = only listed). **Ask:** "What skills am I missing for an AI Engineer role?"
-3. **Gap Detector → "Sample: full Google JD"**: 47% match, ✗ System Design / Docker / AWS, and the 30-day plan that says *"Apply System Design to Melodia"* (the student's own project).
-4. **Interview**: turn on voice + webcam (consent), answer two questions out loud. Show the difficulty ladder moving and the **adaptive decision** panel. End → report → dashboard timeline updated.
-5. **Truth Checker**: "Developed a highly scalable AI recommendation engine" (credibility 47) → enter "170K+ song", "Python, Scikit-learn", "<200 ms" → credible rewrite.
-6. **ATS Simulator**: one resume, 10 job scores; point at "Missing — learn first, don't claim".
-7. **Pitch → Compare 4 companies**: same student, four different pitches. Click Listen.
-8. **Roadmap**: AI Engineer tree with ✓ 🟡 🔴, then close.
 
 ## Rubric mapping
 
@@ -128,9 +118,3 @@ Core engine (src/lib, pure TypeScript, unit-testable)
 ```bash
 node scripts/smoke.mjs   # exercises every API route against a running server
 ```
-
-## Possible Q&A
-
-- **"Is the match score just keyword matching?"** No. Skills are weighted by evidence (a project counts more than a listed keyword), role requirements are weighted (core / important / nice-to-have), alternatives ("X or Y") are understood, and related skills are inferred (React ⇒ JavaScript).
-- **"What if the LLM hallucinates?"** Scores never come from the LLM. Prompts forbid inventing facts, and the rewrite and pitch inputs are restricted to profile data.
-- **"How would you scale it?"** Add auth + Postgres for twins, queue LLM calls, cache JD analyses, and add a vector index of real job postings for market-wide gap analysis.
