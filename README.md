@@ -118,4 +118,3 @@ Core engine (src/lib, pure TypeScript, unit-testable)
 ```bash
 node scripts/smoke.mjs   # exercises every API route against a running server
 ```
-hi
